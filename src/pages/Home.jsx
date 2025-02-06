@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Button from "../components/Button";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -9,14 +8,7 @@ const Home = () => {
   return (
     <Wrap>
       <Logo src="src/assets/logo.png" alt="logo" />
-      <Button
-        background="red"
-        label="포켓몬 도감 시작하기"
-        handleClick={() => navigate("/dex")}
-        onClick={() => {
-          navigate("/dex");
-        }}
-      />
+      <Button onClick={() => navigate("/dex")}>포켓몬 도감 시작하기</Button>
     </Wrap>
   );
 };
@@ -35,4 +27,15 @@ const Wrap = styled.div`
 const Logo = styled.img`
   width: 90vw;
   max-width: 600px;
+`;
+
+const Button = styled.button`
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: rgb(255, 0, 0);
+  color: white;
+  border: none;
+  transition: background-color 0.3s;
 `;

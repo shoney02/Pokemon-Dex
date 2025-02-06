@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import Button from "../components/Button";
 import MOCK_DATA from "../Data/MOCK_DATA";
 
 // 포켓몬 디테일 페이지
@@ -10,7 +9,7 @@ const Detail = () => {
 
   const param = useParams();
 
-  const [pokemon, setPokemon] = useState();
+  const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
     setPokemon(MOCK_DATA.find((item) => item.id === Number(param.id)));
@@ -29,11 +28,7 @@ const Detail = () => {
             })}
           </Description>
           <Description>{pokemon.description}</Description>
-          <Button
-            label="뒤로 가기"
-            background="black"
-            handleClick={() => navigate("/dex")}
-          />
+          <Button onClick={() => navigate("/dex")}>뒤로 가기</Button>
         </Wrap>
       )}
     </>
@@ -65,11 +60,13 @@ const Description = styled.p`
   font-size: 16px;
 `;
 
-// {
-//     img_url:
-//       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-//     korean_name: "이상해씨",
-//     types: ["풀", "독"],
-//     id: 1,
-//     description: "풀과 독 타입의 포켓몬으로, 귀여운 식물 모양을 하고 있습니다.",
-//   },
+const Button = styled.button`
+  background-color: black;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 10px;
+  cursor: pointer;
+`;
+

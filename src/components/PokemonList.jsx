@@ -1,15 +1,16 @@
 // MOCK_DATA에서 데이터를 가져와 PokemonList에 전달하고, 포켓몬 리스트를 PokemonCard 형태로 보여줍니다.
+// 포켓몬 목록록
 
 import React from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
 
-const PokemonList = ({ data }) => {
+const PokemonList = ({ data, addPokemon }) => {
   return (
     <Container>
-      {data.map((pokemon) => {
-        return <PokemonCard key={pokemon.id} data={pokemon} />;
-      })}
+      {data.map((pokemon) => (
+        <PokemonCard key={pokemon.id} data={pokemon} addPokemon={addPokemon} />
+      ))}
     </Container>
   );
 };

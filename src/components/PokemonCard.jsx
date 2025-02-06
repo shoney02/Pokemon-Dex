@@ -1,19 +1,22 @@
 // MOCK_DATA에서 데이터를 가져와 PokemonList에 전달하고, 포켓몬 리스트를 PokemonCard 형태로 보여줍니다.
+// 포켓몬 개별 카드
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button";
 import styled from "styled-components";
 
-const PokemonCard = ({ data }) => {
+const PokemonCard = ({ data, addPokemon }) => {
   const navigate = useNavigate();
 
   return (
-    <Container onClick={() => navigate(`/detail/${data.id}`)}>
-      <Character src={data.img_url} />
+    <Container>
+      <Character
+        src={data.img_url}
+        onClick={() => navigate(`/detail/${data.id}`)}
+      />
       <Name>{data.korean_name}</Name>
       <Description>No. {String(data.id).padStart(3, "0")}</Description>
-      <Button type="sub" background="red" label="추가" handleClick={() => {}} />
+      <Button onClick={() => addPokemon(data)}>추가</Button>
     </Container>
   );
 };
@@ -30,6 +33,7 @@ const Container = styled.div`
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
   padding: 10px;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-5px);
@@ -50,4 +54,15 @@ const Name = styled.p`
 const Description = styled.p`
   font-size: 14px;
   color: #666666;
+`;
+
+const Button = styled.button`
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  background-color: rgb(255, -2, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
 `;
