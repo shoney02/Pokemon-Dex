@@ -1,4 +1,16 @@
+// 버튼 함수
+
 import styled from "styled-components";
+
+const Button = ({ type = "main", background, label, handleClick }) => {
+  return (
+    <Container type={type} background={background} onClick={handleClick}>
+      {label}
+    </Container>
+  );
+};
+
+export default Button;
 
 const Container = styled.div`
   ${({ type, background }) => `
@@ -11,16 +23,3 @@ const Container = styled.div`
         cursor: pointer;
     `}
 `;
-
-export default function Button({
-  type = "main",
-  background,
-  label,
-  handleClick,
-}) {
-  return (
-    <Container type={type} background={background} onClick={handleClick}>
-      {label}
-    </Container>
-  );
-}
