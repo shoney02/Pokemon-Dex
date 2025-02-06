@@ -24,20 +24,19 @@ const Dashboard = () => {
 export default Dashboard;
 
 const Container = styled.div`
-  width: 100%;
-  max-width: 1240px;
   background-color: #f0f0f0;
   border-radius: 10px;
   padding: 20px;
+  margin: 10px;
 `;
 
 const Title = styled.p`
   font-size: 24px;
+  text-align: center;
 `;
 
 const BallContainer = styled.div`
   display: flex;
   justify-content: space-around;
   gap: 10px;
-  overflow: scroll;
 `;
