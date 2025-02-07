@@ -20,9 +20,14 @@ const Dex = () => {
     setMyPokemons([...myPokemons, pokemon]);
   };
 
+  // 포켓몬 삭제 함수
+  const removePokemon = (id) => {
+    setMyPokemons(myPokemons.filter((pokemon) => pokemon.id !== id));
+  };
+
   return (
     <div>
-      <Dashboard myPokemons={myPokemons} />
+      <Dashboard myPokemons={myPokemons} removePokemon={removePokemon} />
       <PokemonList data={MOCK_DATA} addPokemon={addPokemon} />
     </div>
   );

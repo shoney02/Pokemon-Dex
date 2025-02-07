@@ -5,7 +5,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const PokemonCard = ({ data, addPokemon }) => {
+const PokemonCard = ({ data, addPokemon, removePokemon }) => {
   const navigate = useNavigate();
 
   return (
@@ -13,14 +13,28 @@ const PokemonCard = ({ data, addPokemon }) => {
       <Character src={data.img_url} />
       <Name>{data.korean_name}</Name>
       <Description>No. {String(data.id).padStart(3, "0")}</Description>
-      <Button
-        onClick={(e) => {
-          e.stopPropagation(); // 클릭 이벤트가 부모(container)로 전파되지 않도록 방지지
-          addPokemon(data);
-        }}
-      >
-        추가
-      </Button>
+
+      {addPokemon && (
+        <Button
+          onClick={(e) => {
+            e.stopPropagation(); // 클릭 이벤트가 부모(container)로 전파되지 않도록 방지지
+            addPokemon(data);
+          }}
+        >
+          추가
+        </Button>
+      )}
+
+      {removePokemon && (
+        <RemoveButton
+          onClick={(e) => {
+            e.stopPropagation();
+            removePokemon(data.id);
+          }}
+        >
+          삭제
+        </RemoveButton>
+      )}
     </Container>
   );
 };
@@ -61,6 +75,17 @@ const Description = styled.p`
 `;
 
 const Button = styled.button`
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  background-color: rgb(255, -2, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+`;
+
+const RemoveButton = styled(Button)`
   margin-top: 10px;
   padding: 5px 10px;
   font-size: 12px;
