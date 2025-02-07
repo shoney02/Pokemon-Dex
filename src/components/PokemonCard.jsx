@@ -9,14 +9,18 @@ const PokemonCard = ({ data, addPokemon }) => {
   const navigate = useNavigate();
 
   return (
-    <Container>
-      <Character
-        src={data.img_url}
-        onClick={() => navigate(`/detail/${data.id}`)}
-      />
+    <Container onClick={() => navigate(`/detail/${data.id}`)}>
+      <Character src={data.img_url} />
       <Name>{data.korean_name}</Name>
       <Description>No. {String(data.id).padStart(3, "0")}</Description>
-      <Button onClick={() => addPokemon(data)}>추가</Button>
+      <Button
+        onClick={(e) => {
+          e.stopPropagation(); // 클릭 이벤트가 부모(container)로 전파되지 않도록 방지지
+          addPokemon(data);
+        }}
+      >
+        추가
+      </Button>
     </Container>
   );
 };

@@ -1,5 +1,5 @@
 // MOCK_DATA에서 데이터를 가져와 PokemonList에 전달하고, 포켓몬 리스트를 PokemonCard 형태로 보여줍니다.
-// 포켓몬 목록록
+// 포켓몬 목록
 
 import React from "react";
 import PokemonCard from "./PokemonCard";

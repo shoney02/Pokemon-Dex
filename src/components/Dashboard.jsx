@@ -6,19 +6,19 @@ import React from "react";
 import PokemonBall from "./PokemonBall";
 import styled from "styled-components";
 
-const Dashboard = ({ myPokemons }) => {
+const Dashboard = ({ myPokemons, addPokemon }) => {
   return (
     <Container>
       <Title>나만의 포켓몬</Title>
       <BallContainer>
         {myPokemons.map((pokemon) => (
-          <PokemonBall key={pokemon.id} pokemon={pokemon} />
+          <PokemonBall key={pokemon.id} pokemon={pokemon} addPokemon={addPokemon} />
         ))}
         {/* 6칸 유지하기 위해 빈 칸 표시 */}
         {Array(6 - myPokemons.length)
           .fill(null)
           .map((_, index) => (
-            <div key={index} />
+            <PokemonBall key={index} />
           ))}
       </BallContainer>
     </Container>

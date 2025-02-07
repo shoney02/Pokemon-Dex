@@ -1,10 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import PokemonCard from "./PokemonCard";
 
-const PokemonBall = () => {
+const PokemonBall = ({ pokemon, addPokemon }) => {
   return (
     <Container>
-      <Ball src="/src/assets/pokeball.png" />
+      {pokemon ? (
+        <PokemonCard data={pokemon} addPokemon={addPokemon} />
+      ) : (
+        <Ball src="/src/assets/pokeball.png" alt="Pokeball" />
+      )}
     </Container>
   );
 };
