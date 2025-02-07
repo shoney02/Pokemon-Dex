@@ -34,11 +34,3 @@ const Dex = () => {
 };
 
 export default Dex;
-
-// const Wrap = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 20px;
-//   margin: 20px;
-// `;

@@ -41,14 +41,8 @@ const Title = styled.p`
 
 const BallContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   gap: 10px;
-`;
-
-const EmptySlot = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: lightgray;
-  opacity: 0.5;
+  min-height: 180px;
 `;

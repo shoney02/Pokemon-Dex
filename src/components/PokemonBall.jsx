@@ -18,7 +18,7 @@ export default PokemonBall;
 
 const Container = styled.div`
   min-width: 120px;
-  min-height: 120px;
+  min-height: 130px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,4 +29,6 @@ const Container = styled.div`
 
 const Ball = styled.img`
   width: 60px;
+  height: 60px;
+  background-size: cover;
 `;

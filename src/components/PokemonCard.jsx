@@ -26,14 +26,14 @@ const PokemonCard = ({ data, addPokemon, removePokemon }) => {
       )}
 
       {removePokemon && (
-        <RemoveButton
+        <Button
           onClick={(e) => {
             e.stopPropagation();
             removePokemon(data.id);
           }}
         >
           삭제
-        </RemoveButton>
+        </Button>
       )}
     </Container>
   );
@@ -83,15 +83,8 @@ const Button = styled.button`
   background-color: rgb(255, -2, 0);
   color: rgb(255, 255, 255);
   border-radius: 5px;
-`;
 
-const RemoveButton = styled(Button)`
-  margin-top: 10px;
-  padding: 5px 10px;
-  font-size: 12px;
-  cursor: pointer;
-  border: none;
-  background-color: rgb(255, -2, 0);
-  color: rgb(255, 255, 255);
-  border-radius: 5px;
+  &:hover {
+    background-color: rgb(200, 0, 0);
+  }
 `;
