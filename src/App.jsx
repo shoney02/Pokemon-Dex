@@ -1,12 +1,13 @@
 import React from "react";
 import Router from "./shared/Router";
-import { PokemonProvider } from "./context/PokemonContext";
+import { Provider } from "react-redux";
+import store from "./redux/config/configStore";
 
 const App = () => {
   return (
-    <PokemonProvider>
+    <Provider store={store}>
       <Router />
-    </PokemonProvider>
+    </Provider>
   );
 };
 

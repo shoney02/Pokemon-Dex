@@ -1,10 +1,12 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removePokemon } from "../redux/slices/pokemonSlice";
 import PokemonBall from "./PokemonBall";
 import styled from "styled-components";
-import { usePokemon } from "../context/PokemonContext";
 
 const Dashboard = () => {
-  const { myPokemons, removePokemon } = usePokemon();
+  const dispatch = useDispatch();
+  const myPokemons = useSelector((state) => state.pokemon.myPokemons);
 
   return (
     <Container>
@@ -14,9 +16,10 @@ const Dashboard = () => {
           <PokemonBall
             key={pokemon.id}
             pokemon={pokemon}
-            removePokemon={removePokemon}
+            removePokemon={() => dispatch(removePokemon(pokemon.id))}
           />
         ))}
+        {/* 6칸 유지하기 위해 빈 칸 표시 */}
         {Array(6 - myPokemons.length)
           .fill(null)
           .map((_, index) => (
