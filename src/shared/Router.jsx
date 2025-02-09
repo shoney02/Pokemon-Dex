@@ -8,7 +8,6 @@ import Layout from "./Layout";
 const Router = () => {
   return (
     <BrowserRouter>
-      {/* <Layout> */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -16,7 +15,6 @@ const Router = () => {
           <Route path="detail/:id" element={<Detail />} />
         </Route>
       </Routes>
-      {/* </Layout> */}
     </BrowserRouter>
   );
 };
