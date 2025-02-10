@@ -36,22 +36,26 @@ const pokemonSlice = createSlice({
     },
 
     removePokemon: (state, action) => {
-      Swal.fire({
-        title: "포켓몬 삭제",
-        text: "정말 삭제하시겠습니까?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "삭제",
-        cancelButtonText: "취소",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          state.myPokemons = state.myPokemons.filter(
-            (p) => p.id !== action.payload
-          );
-          toast.info("포켓몬이 삭제되었습니다.");
-          localStorage.setItem("pokemonState", JSON.stringify(state)); // 로컬 스토리지에 저장
-        }
-      });
+      return {
+        ...state,
+        myPokemons: state.myPokemons.filter((p) => p.id !== action.payload),
+      };
+      // Swal.fire({
+      //   title: "포켓몬 삭제",
+      //   text: "정말 삭제하시겠습니까?",
+      //   icon: "warning",
+      //   showCancelButton: true,
+      //   confirmButtonText: "삭제",
+      //   cancelButtonText: "취소",
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
+      //     state.myPokemons = state.myPokemons.filter(
+      //       (p) => p.id !== action.payload
+      //     );
+      //     toast.info("포켓몬이 삭제되었습니다.");
+      //     localStorage.setItem("pokemonState", JSON.stringify(state)); // 로컬 스토리지에 저장
+      //   }
+      // });
     },
   },
 });

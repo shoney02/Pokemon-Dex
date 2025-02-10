@@ -3,10 +3,28 @@ import { useSelector, useDispatch } from "react-redux";
 import { removePokemon } from "../redux/slices/pokemonSlice";
 import PokemonBall from "./PokemonBall";
 import styled from "styled-components";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const myPokemons = useSelector((state) => state.pokemon.myPokemons);
+
+  const handleRemovePokemon = (id) => {
+    Swal.fire({
+      title: "포켓몬 삭제",
+      text: "정말 삭제하시겠습니까?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "삭제",
+      cancelButtonText: "취소",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(removePokemon(id));
+        toast.info("포켓몬이 삭제되었습니다.");
+      }
+    });
+  };
 
   return (
     <Container>
@@ -16,7 +34,7 @@ const Dashboard = () => {
           <PokemonBall
             key={pokemon.id}
             pokemon={pokemon}
-            removePokemon={() => dispatch(removePokemon(pokemon.id))}
+            removePokemon={() => handleRemovePokemon(pokemon.id)}
           />
         ))}
         {/* 6칸 유지하기 위해 빈 칸 표시 */}
