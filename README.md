@@ -1,6 +1,7 @@
 # Pokemon Dex - React App
 
 ## Live Demo
+pokemon-dex-wheat.vercel.app
 
 ## 프로젝트 소개
 
